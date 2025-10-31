@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prairies Hills Real Estate</title>
+  <link rel="stylesheet" href="home.css" />
+  <link rel="icon" type="image/png" href="hills logo.webp">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="glass-header">
+    <div class="logo">🏠 Prairies Hills Real Estate</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#properties">Properties</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <video autoplay muted loop playsinline id="bg-video">
+      <source src="fullbg.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-content animate-fade">
+      <h1>Find Your Dream Home</h1>
+      <p>Luxury Houses & Apartments for Sale or Rent</p>
+      <a href="#properties" class="btn">Explore Properties</a>
+    </div>
+  </section>
+
+  <!-- PROPERTIES -->
+  <section id="properties" class="section">
+    <h2 class="section-title">🏘 Featured Listings</h2>
+
+    <!-- FILTER BUTTONS -->
+    <div class="property-filter">
+      <button class="filter-btn active" data-type="all">All</button>
+      <button class="filter-btn" data-type="rent">For Rent</button>
+      <button class="filter-btn" data-type="sale">For Sale</button>
+    </div>
+
+    <div class="property-list">
+
+      <!-- 🏢 PROPERTY 1 — The Fairways East -->
+<div class="property-card animate-fade" data-type="rent">
+  <img src="The Fairways1.webp" alt="Luxury Apartment">
+  <div class="card-content">
+    <h3>The Fairways East, The Views, Dubai</h3>
+    <p>1 Bed • 2 Baths • 847 sqft</p>
+    <p class="price">AED 120,000 Yearly</p>
+    <span class="tag rent">For Rent</span>
+
+    <button class="view-btn"
+      data-images="The Fairways1.webp,The Fairways2.webp,The Fairways3.webp"
+      data-video="The Fairways.mp4"
+      data-title="The Fairways East, The Fairways, The Views, Dubai"
+      data-desc="Spacious 1 Bedroom APT With Lakes View"
+      data-size="847 sqft"
+      data-address="The Fairways East, The Fairways, The Views, Dubai"
+      data-map="https://www.google.com/maps?q=The+Fairways+East+Dubai"
+      data-details="
+        <h4>🏡 Property Overview</h4>
+        <p>Prairies Hills Real Estate is pleased to offer this 1 Bedroom apartment for rent with lake view, located at Fairways East Tower, The Greens, Dubai.</p>
+
+        <ul>
+          <li><strong>1 Bedroom</strong></li>
+          <li><strong>2 Bathrooms</strong></li>
+          <li><strong>Semi-Opened Kitchen</strong></li>
+          <li><strong>Parking:</strong> 1 Slot</li>
+          <li><strong>Rent:</strong> AED 120,000 Yearly</li>
+        </ul>
+
+        <h4>📍 Area Details</h4>
+        <p>The Fairways East is a Mediterranean-style building in The Views, Dubai. Developed by Emaar Properties, it is one of three towers collectively named ‘The Fairways’. This 26-storey tower faces the landscape fields of Emirates Golf Club and offers 1 and 2-bedroom apartments with amenities such as an infinity pool, barbecue area, and gym. The Views community is connected to Sheikh Zayed Road and Al Khail Road, close to The Greens and other Emirates Living communities like The Lakes, The Springs, and Meadows Dubai.</p>
+
+        <ul>
+          <li>Multi-function and community hall for events</li>
+          <li>BBQ area for gatherings and parties</li>
+          <li>Shared amenities with other towers</li>
+          <li>Children’s play area, gymnasium, and infinity pool</li>
+          <li>24-hour security and surveillance</li>
+        </ul>
+
+        <h4>🏠 Property Information</h4>
+        <table style='width:100%;text-align:left;color:#ccc;border-collapse:collapse;'>
+          <tr><td><strong>Type:</strong></td><td>Apartment</td></tr>
+          <tr><td><strong>Purpose:</strong></td><td>For Rent</td></tr>
+          <tr><td><strong>Reference No.:</strong></td><td>Bayut – PH-89</td></tr>
+          <tr><td><strong>Furnishing:</strong></td><td>Unfurnished</td></tr>
+          <tr><td><strong>Added On:</strong></td><td>25 October 2025</td></tr>
+          <tr><td><strong>Ownership:</strong></td><td>Freehold</td></tr>
+          <tr><td><strong>Built-up Area:</strong></td><td>847 sqft</td></tr>
+          <tr><td><strong>Usage:</strong></td><td>Residential</td></tr>
+          <tr><td><strong>Balcony Size:</strong></td><td>85 sqft</td></tr>
+          <tr><td><strong>Parking Availability:</strong></td><td>Yes</td></tr>
+        </table>
+
+         <p style='margin-top:15px;color:gold;'><strong>For more details, kindly contact Prairies Hills Real Estate.</strong><a href='https://wa.me/971504238543' target='_blank' 
+             style='background:#25D366;border-radius:50%;width:40px;height:40px;
+                    display:flex;align-items:center;justify-content:center;
+                    text-decoration:none;'>
+             <i class='fab fa-whatsapp' style='color:white;font-size:20px;'></i>
+          </a></p>
+      ">
+      View
+    </button>
+     
+    
+
+    <button class="book-btn"
+      data-title="The Fairways East, The Fairways, The Views, Dubai"
+      data-price="AED 120,000 Yearly"
+      data-desc="1 Bed • 2 Baths • 847 sqft">Book Now</button>
+  </div>
+</div>
+
+      <!--  PROPERTY 2 -->
+      
+<div class="property-card animate-fade" data-type="sale">
+  <img src="Mayfair Residency.webp" alt="Mayfair Residency Apartment">
+  <div class="card-content">
+    <h3>Mayfair Residency, Business Bay, Dubai</h3>
+    <p>1 Bed • 1 Bath • 621 sqft</p>
+    <p class="price">AED 84,999 Yearly</p>
+    <span class="tag sale">For Sale</span>
+
+    <button class="view-btn"
+      data-images="Mayfair Residency.webp,Mayfair Residency1.webp,Mayfair Residency2.webp"
+      data-video="MayfairResidency-video.mp4"
+      data-title="Mayfair Residency, Business Bay, Dubai"
+      data-desc="High Floor 1 Bedroom APT With Balcony"
+      data-size="621 sqft"
+      data-address="Mayfair Residency, Business Bay, Dubai"
+      data-map="https://www.google.com/maps?q=Mayfair+Residency+Dubai"
+      data-details="
+        <h4>🏡 Property Overview</h4>
+        <p>Prairies Hills Real Estate is pleased to offer this Spacious 1-Bedroom Apartment in Rabdan Mayfair Residency located at Business Bay, Dubai.</p>
+
+        <ul>
+          <li><strong>1 Bedroom</strong></li>
+          <li><strong>1 Bathroom</strong></li>
+          <li><strong>Opened Kitchen</strong></li>
+          <li><strong>Parking:</strong> 1 Slot</li>
+          <li><strong>Rent:</strong> AED 90,000 Yearly</li>
+        </ul>
+
+        <h4>📍 Area Details</h4>
+        <p>Mayfair Residency is a 23-storey residential building in Business Bay, located directly on the Dubai Water Canal. Facilities include swimming pools, separate sauna and steam rooms for men and women, Jacuzzi, gymnasium, terraced roof garden, multi-purpose hall, children’s playroom, ample underground and surface parking, and 24-hour security.</p>
+
+        <ul>
+          <li>Swimming Pools</li>
+          <li>Sauna & Steam Rooms</li>
+          <li>Jacuzzi & Gymnasium</li>
+          <li>Roof Garden & Multi-Purpose Hall</li>
+          <li>Children’s Playroom</li>
+          <li>24-Hour Security</li>
+        </ul>
+
+        <h4>🏠 Property Information</h4>
+        <table style='width:100%;text-align:left;color:#ccc;border-collapse:collapse;'>
+          <tr><td><strong>Type:</strong></td><td>Apartment</td></tr>
+          <tr><td><strong>Purpose:</strong></td><td>For Rent</td></tr>
+          <tr><td><strong>Reference No.:</strong></td><td>Bayut – PH-84</td></tr>
+          <tr><td><strong>Furnishing:</strong></td><td>Furnished</td></tr>
+          <tr><td><strong>Added On:</strong></td><td>8 October 2025</td></tr>
+          <tr><td><strong>Developer:</strong></td><td>DEYAAR DEVELOPMENT (P.J.S.C)</td></tr>
+          <tr><td><strong>Ownership:</strong></td><td>Freehold</td></tr>
+          <tr><td><strong>Built-up Area:</strong></td><td>621 sqft</td></tr>
+          <tr><td><strong>Usage:</strong></td><td>Residential</td></tr>
+          <tr><td><strong>Balcony Size:</strong></td><td>86 sqft</td></tr>
+          <tr><td><strong>Parking Availability:</strong></td><td>Yes</td></tr>
+        </table>
+
+        <p style='margin-top:15px;color:gold;display:flex;align-items:center;gap:10px;'>
+          <strong>For more details, kindly contact Prairies Hills Real Estate.</strong>
+          <a href='https://wa.me/971504238543' target='_blank' 
+             style='background:#25D366;border-radius:50%;width:40px;height:40px;
+                    display:flex;align-items:center;justify-content:center;
+                    text-decoration:none;'>
+             <i class='fab fa-whatsapp' style='color:white;font-size:20px;'></i>
+          </a>
+        </p>
+      ">
+      View
+    </button>
+
+    <button class="book-btn"
+      data-title="Mayfair Residency, Business Bay, Dubai"
+      data-price="AED 84,999 Yearly"
+      data-desc="1 Bed • 1 Bath • 621 sqft">Book Now</button>
+  </div>
+</div>
+
+
+      <!-- 🏡 PROPERTY 3 -->
+<div class="property-card animate-fade" data-type="rent">
+  <img src="Al Furjan West.webp" alt="Family Villa">
+  <div class="card-content">
+    <h3>Al Furjan West, Dubai</h3>
+    <p>5 Beds • 7 Baths • 2,411 sqft</p>
+    <p class="price">AED 195,000 Yearly</p>
+    <span class="tag rent">For Rent</span>
+
+    <button class="view-btn"
+      data-images="Al Furjan West.webp,Al Furjan West1.webp,Al Furjan West2.webp"
+      data-video="FamilyHome-video.mp4"
+      data-title="Al Furjan West, Al Furjan, Dubai"
+      data-desc="Spacious 5BR With Maid's Room Plus Laundry"
+      data-size="2,411 sqft"
+      data-address="Al Furjan West, Jabal Ali First, Dubai"
+      data-map="https://www.google.com/maps?q=Al+Furjan+West+Dubai"
+      data-details="
+        <h4>🏡 Property Overview</h4>
+        <p>Prairies Hills Real Estate is pleased to offer this Spacious 5-Bedroom Villa with Maid's and Laundry Room for rent, located at Al Furjan West, Jabal Ali First.</p>
+
+        <ul>
+          <li><strong>5 Bedrooms</strong></li>
+          <li><strong>Maid’s Room</strong></li>
+          <li><strong>Laundry Area</strong></li>
+          <li><strong>Balcony</strong></li>
+          <li><strong>Closed Kitchen</strong></li>
+          <li><strong>7 Toilets</strong></li>
+          <li><strong>Parking:</strong> 2 Slots</li>
+          <li><strong>BUA:</strong> 2820 sqft</li>
+          <li><strong>Plot:</strong> 2411 sqft</li>
+          <li><strong>Price:</strong> AED 175,000 (2 Cheques)</li>
+          <li><strong>Price:</strong> AED 180,000 (4 Cheques)</li>
+        </ul>
+
+        <h4>📍 Area Details</h4>
+        <p>Al Furjan contains townhouses, villas and residential buildings, all with gardens and terraces. The community is designed to create a friendly, village-like environment with houses built in clusters connected by walkways and parks. Landscaping is complete with more than 30 park areas and pedestrian routes representing a quarter of the Al Furjan master plan.</p>
+
+        <ul>
+          <li>Townhouses &amp; Villas with Gardens</li>
+          <li>Community Parks and Play Areas</li>
+          <li>Walkways &amp; Green Spaces</li>
+          <li>Family-Friendly Environment</li>
+          <li>24-Hour Security &amp; Maintenance</li>
+        </ul>
+
+        <h4>🏠 Property Information</h4>
+        <table style='width:100%;text-align:left;color:#ccc;border-collapse:collapse;'>
+          <tr><td><strong>Type:</strong></td><td>Townhouse</td></tr>
+          <tr><td><strong>Purpose:</strong></td><td>For Rent</td></tr>
+          <tr><td><strong>Reference No.:</strong></td><td>Bayut – PH-04</td></tr>
+          <tr><td><strong>Furnishing:</strong></td><td>Unfurnished</td></tr>
+          <tr><td><strong>TruCheck™ On:</strong></td><td>30 October 2025</td></tr>
+          <tr><td><strong>Added On:</strong></td><td>22 July 2025</td></tr>
+          <tr><td><strong>Ownership:</strong></td><td>Freehold</td></tr>
+          <tr><td><strong>Plot Area:</strong></td><td>2,411 sqft</td></tr>
+          <tr><td><strong>Built-Up Area:</strong></td><td>2,892 sqft</td></tr>
+          <tr><td><strong>Usage:</strong></td><td>Residential</td></tr>
+        </table>
+
+        <p style='margin-top:15px;color:gold;display:flex;align-items:center;gap:10px;'>
+          <strong>For more details, kindly contact Prairies Hills Real Estate.</strong>
+          <a href='https://wa.me/971504238543' target='_blank' 
+             style='background:#25D366;border-radius:50%;width:40px;height:40px;
+                    display:flex;align-items:center;justify-content:center;
+                    text-decoration:none;'>
+             <i class='fab fa-whatsapp' style='color:white;font-size:20px;'></i>
+          </a>
+        </p>
+      ">
+      View
+    </button>
+
+    <button class="book-btn"
+      data-title="Al Furjan West, Dubai"
+      data-price="AED 195,000 Yearly"
+      data-desc="5 Beds • 7 Baths • 2,411 sqft">Book Now</button>
+  </div>
+</div>
+
+
+      <!--  PROPERTY 4 -->
+      
+<div class="property-card animate-fade" data-type="sale">
+  <img src="B13Dunes Village1.webp" alt="Dunes Village Apartment">
+  <div class="card-content">
+    <h3>B13, Dunes Village, Dubai Investment Park 2, Dubai Investment Park (DIP), Dubai</h3>
+    <p>1 Bed • 2 Baths • 979 sqft</p>
+    <p class="price">AED 64,999 Yearly</p>
+    <span class="tag sale">For Sale</span>
+
+    <button class="view-btn"
+      data-images="B13Dunes Village1.webp,B13Dunes Village2.webp,B13Dunes Village3.webp,B13Dunes Village4.webp,B13Dunes Village5.webp,B13Dunes Village6.webp,B13Dunes Village7.webp"
+      data-video="DowntownView.mp4"
+      data-title="B13, Dunes Village, Dubai Investment Park 2, Dubai Investment Park (DIP), Dubai"
+      data-desc="Spacious 1 Bedroom Apartment With Balcony"
+      data-size="979 sqft"
+      data-address="Dunes Village Building 13, DIP 2, Dubai"
+      data-map="https://www.google.com/maps?q=Dunes+Village+Dubai+Investment+Park"
+      data-details="
+        <h4>🏡 Property Overview</h4>
+        <p>Prairies Hills Real Estate is pleased to offer this Spacious 1-Bedroom Apartment for Rent, located at Dunes Village Building 13, Dubai Investment Park 2 (DIP 2).</p>
+
+        <ul>
+          <li><strong>1 Bedroom</strong></li>
+          <li><strong>Balcony</strong></li>
+          <li><strong>Semi Kitchen</strong></li>
+          <li><strong>2 Toilets</strong></li>
+          <li><strong>Parking:</strong> 1 Slot</li>
+          <li><strong>Rent:</strong> AED 64,999 Yearly</li>
+        </ul>
+
+        <h4>📍 Area Details</h4>
+        <p>Dunes Village is a residential community in Dubai Investments Park (DIP). The development consists of 942 studios and one- to two-bedroom apartments situated within 19 five-storey residential buildings. The community includes a wellness centre, mosque, restaurants, and recreational facilities for residents.</p>
+
+        <ul>
+          <li>Low-rise community with modern amenities</li>
+          <li>Wellness Centre and Mosque</li>
+          <li>Restaurants and Retail outlets</li>
+          <li>Ample Parking Spaces</li>
+          <li>Family-friendly Neighborhood</li>
+        </ul>
+
+        <h4>🏠 Property Information</h4>
+        <table style='width:100%;text-align:left;color:#ccc;border-collapse:collapse;'>
+          <tr><td><strong>Type:</strong></td><td>Apartment</td></tr>
+          <tr><td><strong>Purpose:</strong></td><td>For Rent</td></tr>
+          <tr><td><strong>Reference No.:</strong></td><td>Bayut – PH-92</td></tr>
+          <tr><td><strong>Furnishing:</strong></td><td>Unfurnished</td></tr>
+          <tr><td><strong>TruCheck™ On:</strong></td><td>30 October 2025</td></tr>
+          <tr><td><strong>Added On:</strong></td><td>30 October 2025</td></tr>
+          <tr><td><strong>Developer:</strong></td><td>DUNES VILLAGE REAL ESTATE</td></tr>
+          <tr><td><strong>Ownership:</strong></td><td>Freehold &amp; Leasehold</td></tr>
+          <tr><td><strong>Built-up Area:</strong></td><td>979 sqft</td></tr>
+          <tr><td><strong>Usage:</strong></td><td>Residential</td></tr>
+          <tr><td><strong>Balcony Size:</strong></td><td>131 sqft</td></tr>
+          <tr><td><strong>Parking Availability:</strong></td><td>Yes</td></tr>
+        </table>
+
+        <h4>🏢 Building Information</h4>
+        <table style='width:100%;text-align:left;color:#ccc;border-collapse:collapse;'>
+          <tr><td><strong>Building Name:</strong></td><td>DUNES 13</td></tr>
+          <tr><td><strong>Year of Completion:</strong></td><td>2012</td></tr>
+          <tr><td><strong>Total Floors:</strong></td><td>5</td></tr>
+          <tr><td><strong>Total Building Area:</strong></td><td>39,617 sqft</td></tr>
+        </table>
+
+        <p style='margin-top:15px;color:gold;display:flex;align-items:center;gap:10px;'>
+          <strong>For more details, kindly contact Prairies Hills Real Estate.</strong>
+          <a href='https://wa.me/971504238543' target='_blank'
+             style='background:#25D366;border-radius:50%;width:40px;height:40px;
+                    display:flex;align-items:center;justify-content:center;
+                    text-decoration:none;'>
+             <i class='fab fa-whatsapp' style='color:white;font-size:20px;'></i>
+          </a>
+        </p>
+      ">
+      View
+    </button>
+
+    <button class="book-btn"
+      data-title="B13, Dunes Village, Dubai Investment Park 2, Dubai Investment Park (DIP), Dubai"
+      data-price="AED 64,999 Yearly"
+      data-desc="1 Bed • 2 Baths • 979 sqft">Book Now</button>
+  </div>
+</div>
+
+
+      <!--  PROPERTY 5 -->
+<div class="property-card animate-fade" data-type="rent">
+  <img src="Rabdan Building1.webp" alt="Rabdan Building Apartment">
+  <div class="card-content">
+    <h3>Rabdan Building, Motor City, Dubai</h3>
+    <p>2 Beds • 3 Baths • 1,202 sqft</p>
+    <p class="price">AED 150,000 Yearly</p>
+    <span class="tag rent">For Rent</span>
+
+    <button class="view-btn"
+      data-images="Rabdan Building1.webp,Rabdan Building2.webp,Rabdan Building3.webp,Rabdan Building4.webp,Rabdan Building5.webp,
+      Rabdan Building6.webp,Rabdan Building7.webp,Rabdan Building8.webp"
+      data-video="PalmJumeirah.mp4"
+      data-title="Rabdan Building, Motor City, Dubai"
+      data-desc="Spacious 2 Bedroom Apartment With Balcony"
+      data-size="1,202 sqft"
+      data-address="Rabdan Building, Motor City, Dubai"
+      data-map="https://www.google.com/maps?q=Rabdan+Building+Motor+City+Dubai"
+      data-details="
+        <h4>🏡 Property Overview</h4>
+        <p>Prairies Hills Real Estate is pleased to offer this Modern Spacious 2-Bedroom Apartment in Rabdan Building, located in Motor City, Dubai.</p>
+
+        <ul>
+          <li><strong>2 Bedrooms</strong></li>
+          <li><strong>Semi-Closed Kitchen</strong></li>
+          <li><strong>3 Bathrooms</strong></li>
+          <li><strong>Parking:</strong> 1 Slot</li>
+          <li><strong>Rent:</strong> AED 150,000 Yearly</li>
+        </ul>
+
+        <h4>📍 Area Details</h4>
+        <p>Located in a pet-friendly neighborhood with safe, pedestrian-friendly streets, this property offers outstanding amenities including central AC, covered parking, a fully equipped shared gym, children’s play area, and a community swimming pool.</p>
+        <p>Perfectly situated near Renaissance School, Waitrose supermarket, and dining options such as Sushi Counter and Wagamama. Families and professionals alike will appreciate Motor City’s abundance of parks, sports facilities, and calm outdoor spaces. Dubai Autodrome and other recreational attractions are nearby, offering both leisure and convenience.</p>
+        <p>Dubai International Airport (DXB) ≈ 28 minutes drive • Al Maktoum International Airport ≈ 32 minutes • Dubai Mall ≈ 23 minutes • Palm Jumeirah ≈ 17 minutes • Burj Al Arab ≈ 20 minutes • The Walk JBR ≈ 21 minutes</p>
+
+        <h4>🏠 Property Information</h4>
+        <table style='width:100%;text-align:left;color:#ccc;border-collapse:collapse;'>
+          <tr><td><strong>Type:</strong></td><td>Apartment</td></tr>
+          <tr><td><strong>Purpose:</strong></td><td>For Rent</td></tr>
+          <tr><td><strong>Reference No.:</strong></td><td>Bayut – PH-79</td></tr>
+          <tr><td><strong>Furnishing:</strong></td><td>Unfurnished</td></tr>
+          <tr><td><strong>TruCheck™ On:</strong></td><td>30 September 2025</td></tr>
+          <tr><td><strong>Added On:</strong></td><td>29 September 2025</td></tr>
+          <tr><td><strong>Ownership:</strong></td><td>Freehold</td></tr>
+          <tr><td><strong>Built-up Area:</strong></td><td>1,202 sqft</td></tr>
+          <tr><td><strong>Usage:</strong></td><td>Residential</td></tr>
+          <tr><td><strong>Balcony Size:</strong></td><td>105 sqft</td></tr>
+        </table>
+
+        <h4>🏢 Building Information</h4>
+        <table style='width:100%;text-align:left;color:#ccc;border-collapse:collapse;'>
+          <tr><td><strong>Building Name:</strong></td><td>Rabdan</td></tr>
+          <tr><td><strong>Year of Completion:</strong></td><td>2020</td></tr>
+          <tr><td><strong>Total Floors:</strong></td><td>18</td></tr>
+          <tr><td><strong>Retail Centres:</strong></td><td>8</td></tr>
+          <tr><td><strong>Total Building Area:</strong></td><td>637,662 sqft</td></tr>
+        </table>
+
+        <p style='margin-top:15px;color:gold;display:flex;align-items:center;gap:10px;'>
+          <strong>For more details, kindly contact Prairies Hills Real Estate.</strong>
+          <a href='https://wa.me/971504238543' target='_blank'
+             style='background:#25D366;border-radius:50%;width:40px;height:40px;
+                    display:flex;align-items:center;justify-content:center;
+                    text-decoration:none;'>
+             <i class='fab fa-whatsapp' style='color:white;font-size:20px;'></i>
+          </a>
+        </p>
+      ">
+      View
+    </button>
+
+    <button class="book-btn"
+      data-title="Rabdan Building, Motor City, Dubai"
+      data-price="AED 150,000 Yearly"
+      data-desc="2 Beds • 3 Baths • 1,202 sqft">Book Now</button>
+  </div>
+</div>
+
+
+
+
+      <!--  PROPERTY 6 -->
+      <!-- 🏢 PROPERTY 6 -->
+<div class="property-card animate-fade" data-type="sale">
+  <img src="Forte 1.webp" alt="Forte 1 Apartment">
+  <div class="card-content">
+    <h3>Forte 1, Downtown Dubai, Dubai</h3>
+    <p>3 Beds • 4 Baths • 1,588 sqft</p>
+    <p class="price">AED 284,000 Yearly</p>
+    <span class="tag rent">For Rent</span>
+
+    <button class="view-btn"
+      data-images="Forte 1.webp,Forte 2.webp,Forte 3.webp,Forte 4.webp,Forte 5.webp,Forte 6.webp,Forte 7.webp,Forte 8.webp,Forte 9.webp,Forte 10.webp"
+      data-video="MeydanHeights.mp4"
+      data-title="Forte 1, Downtown Dubai, Dubai"
+      data-desc="Burj Khalifa View Furnished 3BR With Maid's Room"
+      data-size="1,588 sqft"
+      data-address="Forte 1, Downtown Dubai, Dubai"
+      data-map="https://www.google.com/maps?q=Forte+1+Downtown+Dubai"
+      data-details="
+        <h4>🏡 Property Overview</h4>
+        <p>Prairies Hills Real Estate is pleased to offer this Luxury 3-Bedroom Apartment with Maid’s Room and Laundry Room for rent, featuring a full Burj Khalifa view. Located at Forte Tower 1, in the heart of Downtown Dubai’s Opera District.</p>
+
+        <ul>
+          <li><strong>3 Bedrooms</strong></li>
+          <li><strong>4 Bathrooms</strong></li>
+          <li><strong>Maid’s Room</strong></li>
+          <li><strong>Laundry Room</strong></li>
+          <li><strong>Area:</strong> 1,587.89 sqft</li>
+          <li><strong>Furnished</strong></li>
+          <li><strong>Built-in Wardrobes</strong></li>
+          <li><strong>Balcony</strong></li>
+          <li><strong>Shared Pool &amp; Gym</strong></li>
+          <li><strong>2 Covered Parking Spaces</strong></li>
+        </ul>
+
+        <h4>🏙 Building Specifications</h4>
+        <ul>
+          <li>Brand New Emaar Development</li>
+          <li>Fully Equipped Gymnasium</li>
+          <li>Swimming Pool</li>
+          <li>Library</li>
+          <li>Cinema Room</li>
+          <li>Three Squash Courts</li>
+        </ul>
+
+        <h4>📍 Area Details</h4>
+        <p>Forte 1 is situated in the Opera District of Downtown Dubai, neighboring the city's finest attractions — including Burj Khalifa, Dubai Mall, and world-class restaurants. The apartment boasts an open kitchen concept, spacious bedrooms, and breathtaking views of the Burj Khalifa Fountain and Opera House. Located on a higher floor, residents enjoy both luxury and serenity in one of Dubai’s most prestigious addresses.</p>
+
+        <h4>🏠 Property Information</h4>
+        <table style='width:100%;text-align:left;color:#ccc;border-collapse:collapse;'>
+          <tr><td><strong>Type:</strong></td><td>Apartment</td></tr>
+          <tr><td><strong>Purpose:</strong></td><td>For Rent</td></tr>
+          <tr><td><strong>Reference No.:</strong></td><td>Bayut – PH-62</td></tr>
+          <tr><td><strong>Furnishing:</strong></td><td>Furnished</td></tr>
+          <tr><td><strong>TruCheck™ On:</strong></td><td>13 October 2025</td></tr>
+          <tr><td><strong>Added On:</strong></td><td>23 July 2025</td></tr>
+          <tr><td><strong>Developer:</strong></td><td>EMAAR DEVELOPMENT P.J.S.C.</td></tr>
+          <tr><td><strong>Ownership:</strong></td><td>Freehold</td></tr>
+          <tr><td><strong>Built-up Area:</strong></td><td>1,588 sqft</td></tr>
+          <tr><td><strong>Usage:</strong></td><td>Residential</td></tr>
+          <tr><td><strong>Balcony Size:</strong></td><td>105 sqft</td></tr>
+          <tr><td><strong>Parking Availability:</strong></td><td>Yes</td></tr>
+        </table>
+
+        <h4>🏢 Building Information</h4>
+        <table style='width:100%;text-align:left;color:#ccc;border-collapse:collapse;'>
+          <tr><td><strong>Building Name:</strong></td><td>Forte 1</td></tr>
+          <tr><td><strong>Year of Completion:</strong></td><td>2020</td></tr>
+          <tr><td><strong>Total Floors:</strong></td><td>18</td></tr>
+          <tr><td><strong>Total Retail Centres:</strong></td><td>8</td></tr>
+          <tr><td><strong>Total Building Area:</strong></td><td>637,662 sqft</td></tr>
+        </table>
+
+        <p style='margin-top:15px;color:gold;display:flex;align-items:center;gap:10px;'>
+          <strong>For more details, kindly contact Prairies Hills Real Estate.</strong>
+          <a href='https://wa.me/971504238543' target='_blank'
+             style='background:#25D366;border-radius:50%;width:40px;height:40px;
+                    display:flex;align-items:center;justify-content:center;
+                    text-decoration:none;'>
+             <i class='fab fa-whatsapp' style='color:white;font-size:20px;'></i>
+          </a>
+        </p>
+      ">
+      View
+    </button>
+
+    <button class="book-btn"
+      data-title="Forte 1, Downtown Dubai, Dubai"
+      data-price="AED 284,000 Yearly"
+      data-desc="3 Beds • 4 Baths • 1,588 sqft">Book Now</button>
+  </div>
+</div>
+
+  </section>
+
+
+
+
+
+
+
+
+    
+
+  </section>
+
+ 
+ 
+ 
+ 
+ 
+  <!-- CONTACT -->
+<section id="contact" class="section contact">
+  <h2 class="section-title">📱 Connect With Us</h2>
+
+  
+    <div class="social-links">
+  <a href="https://www.facebook.com/share/1Ef3As81Ks/" target="_blank" class="social-icon">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://www.instagram.com/" target="_blank" class="social-icon">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.tiktok.com/@prairies.hills.re?_r=1&_t=ZS-910EjvdcxmR" target="_blank" class="social-icon">
+    <i class="fab fa-tiktok"></i>
+  </a>
+</div>
+
+
+  </div>
+
+  <div class="contact-note">
+    <p>🏢 Office: ROYAL CLASS BUSINESS CENTER L.L.C</p>
+    <p>📞 Contact: <strong>+971 50 423 8543</strong></p>
+    <a href="https://wa.me/971504238543" target="_blank" class="whatsapp-btn">
+      <img src="whatsapp-icon-seeklogo.png" alt="WhatsApp"> Message Us
+    </a>
+  </div>
+</section>
+
+
+  <!-- ABOUT -->
+<section id="about" class="section about">
+  <h2 class="section-title">🏢 About Prairies Hills Real Estate</h2>
+
+  <div class="about-container animate-slide">
+    <img src="hills logo.webp" alt="Company Logo" class="owner-photo">
+
+    <div class="about-text">
+      <h3>Our Company</h3>
+      <p>
+        <strong>Prairies Hills Real Estate</strong> is one of Dubai’s trusted real estate agencies,
+        providing clients with a range of luxury properties for both sale and rent. 
+        With over a decade of experience, we specialize in residential and commercial developments,
+        offering a professional approach to finding the right property for every client.
+      </p>
+
+      <!-- Hidden expandable text -->
+      <div class="extra-text">
+        <p>
+          Property Types: Townhouses, Apartments, Shops<br>
+          Service Areas: Downtown Dubai, Majan, Al Furjan, Motor City, Meydan City, Business Bay, The Views, Dubai Investment Park (DIP)<br><br>
+
+          Welcome to <strong>Prairies Hills Real Estate</strong> – Your Gateway to Dubai's Finest Properties.  
+          We specialize in turning your dreams of owning or investing in property into a reality. 
+          With an expert team that understands the dynamic real estate market, we offer personalized 
+          services to meet your unique needs — whether you’re buying, selling, renting, or investing.  
+          Our deep knowledge of Dubai’s neighborhoods ensures that we provide you with the best 
+          opportunities for growth and value.
+        </p>
+
+        <p>
+          We take pride in offering a diverse portfolio of premium properties, from luxurious villas 
+          to modern apartments, each handpicked to offer comfort, style, and exceptional returns.  
+          What sets us apart is our commitment to integrity, transparency, and customer satisfaction.  
+          At Prairies Hills, we prioritize building long-lasting relationships through trust and excellent 
+          service. Whether you're a first-time buyer or a seasoned investor, let us guide you through 
+          every step of your real estate journey in Dubai.
+        </p>
+      </div>
+
+      <!-- Read More Button -->
+      <button class="read-btn" id="readMoreBtn">Read More</button>
+    </div>
+  </div>
+
+  <h2 class="section-title" style="margin-top:60px;">👨‍💼 Meet Our Agent</h2>
+
+  <div class="about-container animate-slide">
+    <img src="owner.webp" alt="Owner" class="owner-photo">
+    <div class="about-text">
+      <h3>Syed Muhammad Abbas Raza</h3>
+      <p>
+        Founder & CEO of <strong>Prairies Hills Real Estate</strong>.<br>
+        With over 10 years in the Dubai property market, he specializes in luxury apartments and villas.
+        Fluent in English, Urdu & Arabic, Mr. Raza ensures every client receives a personalized and
+        professional experience in buying, selling, or renting their dream home.
+      </p>
+      <a href="https://wa.me/971504238543" target="_blank" class="whatsapp-btn">
+        <img src="whatsapp-icon-seeklogo.png" alt="WhatsApp"> Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Prairies Hills Real Estate | Designed by Vil Andrew Calim</p>
+  </footer>
+
+  <!-- VIEW MODAL -->
+  <div id="galleryModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc" class="modal-desc"></p>
+      <div class="info-box">
+        <p><strong>📍 Address:</strong> <span id="modalAddress"></span></p>
+        <p><strong>📏 Size:</strong> <span id="modalSize"></span></p>
+        <a id="modalMap" href="#" target="_blank" class="map-link">View on Google Maps</a>
+      </div>
+      <div id="gallery"></div>
+      <div id="extraDetails"></div>
+    </div>
+  </div>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/971504238543" target="_blank" class="float-whatsapp">
+    <img src="whatsapp-icon-seeklogo.png" alt="WhatsApp">
+  </a>
+
+  <script src="home.js"></script>
+</body>
+</html>
