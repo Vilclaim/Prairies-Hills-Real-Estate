@@ -23,7 +23,7 @@ bookButtons.forEach(button => {
 });
 
 /* -----------------------------
-   🟡 VIEW MODAL + DETAILS
+   🟡 VIEW MODAL + DETAILS + DEEP LINK
 ----------------------------- */
 const modal = document.getElementById("galleryModal");
 const gallery = document.getElementById("gallery");
@@ -35,64 +35,237 @@ const modalMap = document.getElementById("modalMap");
 const extraDetails = document.getElementById("extraDetails");
 const closeBtn = document.querySelector(".close-btn");
 
-document.querySelectorAll(".view-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const images = btn.dataset.images.split(",");
-    const video = btn.dataset.video;
-    const title = btn.dataset.title;
-    const desc = btn.dataset.desc;
-    const size = btn.dataset.size;
-    const address = btn.dataset.address;
-    const map = btn.dataset.map;
-    const detailsHTML = btn.dataset.details;
+// open modal helper
+function openPropertyFromButton(btn) {
+  const id = btn.dataset.id;
+  const images = (btn.dataset.images || "").split(",").filter(Boolean);
+  const video = btn.dataset.video;
+  const title = btn.dataset.title || "";
+  const desc = btn.dataset.desc || "";
+  const size = btn.dataset.size || "";
+  const address = btn.dataset.address || "";
+  const map = btn.dataset.map || "#";
+  const detailsHTML = btn.dataset.details || "";
 
-    modalTitle.textContent = title;
-    modalDesc.textContent = desc;
-    modalSize.textContent = size;
-    modalAddress.textContent = address;
-    modalMap.href = map;
-    extraDetails.innerHTML = detailsHTML || "";
+  modalTitle.textContent = title;
+  modalDesc.textContent = desc;
+  modalSize.textContent = size;
+  modalAddress.textContent = address;
+  modalMap.href = map;
+  extraDetails.innerHTML = detailsHTML;
 
-    gallery.innerHTML = "";
-
-    // Images
-    images.forEach(img => {
-      const imageEl = document.createElement("img");
-      imageEl.src = img.trim();
-      imageEl.classList.add("zoomable");
-      gallery.appendChild(imageEl);
-    });
-
-    // Video
-    if (video) {
-      const videoEl = document.createElement("video");
-      videoEl.src = video;
-      videoEl.controls = true;
-      gallery.appendChild(videoEl);
-    }
-
-    // Add Save/Share
-    addShareButtons(title, desc);
-
-    modal.style.display = "flex";
-    document.body.style.overflow = "hidden";
+  // gallery
+  gallery.innerHTML = "";
+  images.forEach(img => {
+    const imageEl = document.createElement("img");
+    imageEl.src = img.trim();
+    imageEl.classList.add("zoomable");
+    gallery.appendChild(imageEl);
   });
+  if (video) {
+    const videoEl = document.createElement("video");
+    videoEl.src = video;
+    videoEl.controls = true;
+    gallery.appendChild(videoEl);
+  }
+
+  // Update URL hash for shareable link
+  history.replaceState(null, null, `#${id}`);
+
+  addShareButtons(title, desc, id);
+  modal.style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+
+document.querySelectorAll(".view-btn").forEach(btn => {
+  btn.addEventListener("click", () => openPropertyFromButton(btn));
 });
 
 closeBtn.addEventListener("click", closeModal);
-window.addEventListener("click", e => {
-  if (e.target === modal) closeModal();
-});
+window.addEventListener("click", e => { if (e.target === modal) closeModal(); });
 
 function closeModal() {
   modal.style.display = "none";
   document.body.style.overflow = "auto";
+  // Clear hash without reloading
+  history.replaceState(null, null, " ");
 }
 
+/* -----------------------------
+   🔗 SHARE / SAVE BAR
+----------------------------- */
+function addShareButtons(title, desc, id) {
+  const oldBar = document.querySelector(".share-bar");
+  if (oldBar) oldBar.remove();
 
+  const bar = document.createElement("div");
+  bar.classList.add("share-bar");
+  bar.innerHTML = `
+    <button class="save-btn">💾 Save</button>
+    <button class="share-btn">🔗 Share</button>
+  `;
+  modal.querySelector(".modal-content").insertBefore(bar, modalDesc);
+
+  const saveBtn = bar.querySelector(".save-btn");
+  const shareBtn = bar.querySelector(".share-btn");
+
+  const shareUrl = `${window.location.origin}${window.location.pathname}#${id}`;
+
+  // SAVE
+  const saved = JSON.parse(localStorage.getItem("savedProperties")) || [];
+  const alreadySaved = saved.find(p => p.title === title);
+  if (alreadySaved) {
+    saveBtn.textContent = "💛 Saved";
+    saveBtn.style.background = "gold";
+    saveBtn.style.color = "#000";
+  }
+  saveBtn.addEventListener("click", () => {
+    const property = { title, desc, image: gallery.querySelector("img")?.src || "" };
+    let savedList = JSON.parse(localStorage.getItem("savedProperties")) || [];
+    if (!savedList.find(p => p.title === property.title)) {
+      savedList.push(property);
+      localStorage.setItem("savedProperties", JSON.stringify(savedList));
+      alert("✅ Property saved to favorites!");
+      saveBtn.textContent = "💛 Saved";
+      saveBtn.style.background = "gold";
+      saveBtn.style.color = "#000";
+      updateSavedCounter();
+    } else {
+      alert("⚠️ Already saved.");
+    }
+  });
+
+  // SHARE
+  shareBtn.addEventListener("click", async () => {
+    try {
+      await navigator.share({
+        title: "Prairies Hills Real Estate",
+        text: `Check out this property: ${title}`,
+        url: shareUrl,
+      });
+    } catch {
+      navigator.clipboard.writeText(shareUrl);
+      alert("🔗 Property link copied to clipboard!");
+    }
+  });
+}
 
 /* -----------------------------
-   🖼 FULLSCREEN IMAGE SLIDER LIKE BAYUT
+   🌐 AUTO OPEN PROPERTY BY HASH LINK
+----------------------------- */
+window.addEventListener("load", () => {
+  const hash = window.location.hash.replace("#", "");
+  if (!hash) return;
+
+  const card = document.getElementById(hash);
+  if (!card) return;
+
+  // make sure correct filter is visible when deep-linking
+  const type = card.getAttribute("data-type");
+  const filterBtn = document.querySelector(`.filter-btn[data-type="${type}"]`);
+  if (filterBtn) filterBtn.click();
+
+  const viewBtn = card.querySelector(".view-btn");
+  if (viewBtn) {
+    // smooth scroll to the card (nice UX), then open
+    card.scrollIntoView({ behavior: "smooth", block: "center" });
+    setTimeout(() => openPropertyFromButton(viewBtn), 600);
+  }
+});
+
+/* -----------------------------
+   ❤️ FAVORITES FLOATING BUTTON
+----------------------------- */
+function updateSavedCounter() {
+  const savedList = JSON.parse(localStorage.getItem("savedProperties")) || [];
+  const counter = document.getElementById("saved-counter");
+  if (counter) counter.textContent = savedList.length;
+}
+
+const savedBtn = document.createElement("div");
+savedBtn.className = "saved-floating";
+savedBtn.innerHTML = `❤️ <span id="saved-counter">0</span>`;
+document.body.appendChild(savedBtn);
+updateSavedCounter();
+
+savedBtn.addEventListener("click", openSavedModal);
+
+function openSavedModal() {
+  const saved = JSON.parse(localStorage.getItem("savedProperties")) || [];
+  const savedModal = document.createElement("div");
+  savedModal.classList.add("modal");
+  savedModal.style.display = "flex";
+
+  const content = document.createElement("div");
+  content.classList.add("modal-content");
+  content.innerHTML = `
+    <span class="close-btn">&times;</span>
+    <h3>❤️ Saved Properties</h3>
+    <div class="saved-list">
+      ${
+        saved.length
+          ? saved.map((p, i) => `
+              <div class="saved-item">
+                <img src="${p.image}" alt="${p.title}">
+                <div class="saved-info">
+                  <h4>${p.title}</h4>
+                  <p>${p.desc}</p>
+                  <button class="remove-btn" data-index="${i}">🗑 Remove</button>
+                </div>
+              </div>`).join("")
+          : "<p>No saved properties yet.</p>"
+      }
+    </div>
+  `;
+
+  savedModal.appendChild(content);
+  document.body.appendChild(savedModal);
+  document.body.style.overflow = "hidden";
+
+  content.querySelector(".close-btn").addEventListener("click", () => {
+    savedModal.remove();
+    document.body.style.overflow = "auto";
+  });
+
+  savedModal.addEventListener("click", e => {
+    if (e.target === savedModal) {
+      savedModal.remove();
+      document.body.style.overflow = "auto";
+    }
+  });
+
+  content.querySelectorAll(".remove-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const index = btn.dataset.index;
+      removeSavedProperty(index);
+      savedModal.remove();
+      openSavedModal(); // refresh
+    });
+  });
+}
+
+function removeSavedProperty(index) {
+  let saved = JSON.parse(localStorage.getItem("savedProperties")) || [];
+  saved.splice(index, 1);
+  localStorage.setItem("savedProperties", JSON.stringify(saved));
+  updateSavedCounter();
+}
+
+/* -----------------------------
+   🖼 IMAGE ZOOM OVERLAY
+----------------------------- */
+document.addEventListener("click", e => {
+  if (e.target.classList.contains("zoomable")) {
+    const zoomOverlay = document.createElement("div");
+    zoomOverlay.classList.add("image-zoom");
+    zoomOverlay.innerHTML = `<img src="${e.target.src}" alt="Zoomed Image">`;
+    document.body.appendChild(zoomOverlay);
+    zoomOverlay.addEventListener("click", () => zoomOverlay.remove());
+  }
+});
+
+/* -----------------------------
+   🖼 FULLSCREEN SLIDER (Bayut-like)
 ----------------------------- */
 let currentIndex = 0;
 let currentImages = [];
@@ -121,7 +294,6 @@ function openFullScreenSlider(index) {
   document.body.appendChild(overlay);
   document.body.style.overflow = "hidden";
 
-  // navigation
   const img = overlay.querySelector(".slide-photo");
   const left = overlay.querySelector(".arrow.left");
   const right = overlay.querySelector(".arrow.right");
@@ -129,193 +301,14 @@ function openFullScreenSlider(index) {
 
   const updateImage = () => { img.src = currentImages[currentIndex]; };
 
-  left.onclick = () => {
-    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-    updateImage();
-  };
-
-  right.onclick = () => {
-    currentIndex = (currentIndex + 1) % currentImages.length;
-    updateImage();
-  };
-
-  back.onclick = () => {
-    overlay.remove();
-    document.body.style.overflow = "auto";
-  };
+  left.onclick = () => { currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length; updateImage(); };
+  right.onclick = () => { currentIndex = (currentIndex + 1) % currentImages.length; updateImage(); };
+  back.onclick = () => { overlay.remove(); document.body.style.overflow = "auto"; };
 
   overlay.addEventListener("click", e => {
-    if (e.target === overlay) {
-      overlay.remove();
-      document.body.style.overflow = "auto";
-    }
+    if (e.target === overlay) { overlay.remove(); document.body.style.overflow = "auto"; }
   });
 }
-
-
-
-/* -----------------------------
-   ❤️ SAVE / SHARE BUTTONS
------------------------------ */
-function addShareButtons(title, desc) {
-  const oldBar = document.querySelector(".share-bar");
-  if (oldBar) oldBar.remove();
-
-  const bar = document.createElement("div");
-  bar.classList.add("share-bar");
-  bar.innerHTML = `
-    <button class="save-btn">💾 Save</button>
-    <button class="share-btn">🔗 Share</button>
-  `;
-  modal.querySelector(".modal-content").insertBefore(bar, modalDesc);
-
-  const saveBtn = bar.querySelector(".save-btn");
-  const shareBtn = bar.querySelector(".share-btn");
-
-  const saved = JSON.parse(localStorage.getItem("savedProperties")) || [];
-  const alreadySaved = saved.find(p => p.title === title);
-
-  if (alreadySaved) {
-    saveBtn.textContent = "💛 Saved";
-    saveBtn.style.background = "gold";
-    saveBtn.style.color = "#000";
-  }
-
-  // SAVE
-  saveBtn.addEventListener("click", () => {
-    const property = {
-      title,
-      desc,
-      image: gallery.querySelector("img")?.src || "",
-    };
-    let savedList = JSON.parse(localStorage.getItem("savedProperties")) || [];
-
-    if (!savedList.find(p => p.title === property.title)) {
-      savedList.push(property);
-      localStorage.setItem("savedProperties", JSON.stringify(savedList));
-      alert("✅ Property saved to favorites!");
-      saveBtn.textContent = "💛 Saved";
-      saveBtn.style.background = "gold";
-      saveBtn.style.color = "#000";
-      updateSavedCounter();
-    } else {
-      alert("⚠️ Already saved.");
-    }
-  });
-
-  // SHARE
-  shareBtn.addEventListener("click", async () => {
-    const url = window.location.href;
-    try {
-      await navigator.share({
-        title: "Prairies Hills Real Estate",
-        text: `Check out this property: ${title}`,
-        url: url,
-      });
-    } catch {
-      navigator.clipboard.writeText(`${title} - ${url}`);
-      alert("🔗 Link copied to clipboard!");
-    }
-  });
-}
-
-/* -----------------------------
-   💖 FAVORITE SYSTEM
------------------------------ */
-function updateSavedCounter() {
-  const savedList = JSON.parse(localStorage.getItem("savedProperties")) || [];
-  const counter = document.getElementById("saved-counter");
-  if (counter) counter.textContent = savedList.length;
-}
-
-// Floating heart icon
-const savedBtn = document.createElement("div");
-savedBtn.className = "saved-floating";
-savedBtn.innerHTML = `❤️ <span id="saved-counter">0</span>`;
-document.body.appendChild(savedBtn);
-updateSavedCounter();
-
-savedBtn.addEventListener("click", openSavedModal);
-
-function openSavedModal() {
-  const saved = JSON.parse(localStorage.getItem("savedProperties")) || [];
-  const savedModal = document.createElement("div");
-  savedModal.classList.add("modal");
-  savedModal.style.display = "flex";
-
-  const content = document.createElement("div");
-  content.classList.add("modal-content");
-  content.innerHTML = `
-    <span class="close-btn">&times;</span>
-    <h3>❤️ Saved Properties</h3>
-    <div class="saved-list">
-      ${
-        saved.length
-          ? saved
-              .map(
-                (p, i) => `
-              <div class="saved-item">
-                <img src="${p.image}" alt="${p.title}">
-                <div class="saved-info">
-                  <h4>${p.title}</h4>
-                  <p>${p.desc}</p>
-                  <button class="remove-btn" data-index="${i}">🗑 Remove</button>
-                </div>
-              </div>`
-              )
-              .join("")
-          : "<p>No saved properties yet.</p>"
-      }
-    </div>
-  `;
-
-  savedModal.appendChild(content);
-  document.body.appendChild(savedModal);
-  document.body.style.overflow = "hidden";
-
-  content.querySelector(".close-btn").addEventListener("click", () => {
-    savedModal.remove();
-    document.body.style.overflow = "auto";
-  });
-
-  savedModal.addEventListener("click", e => {
-    if (e.target === savedModal) {
-      savedModal.remove();
-      document.body.style.overflow = "auto";
-    }
-  });
-
-  // Remove buttons
-  const removeBtns = content.querySelectorAll(".remove-btn");
-  removeBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const index = btn.dataset.index;
-      removeSavedProperty(index);
-      savedModal.remove();
-      openSavedModal(); // refresh view
-    });
-  });
-}
-
-function removeSavedProperty(index) {
-  let saved = JSON.parse(localStorage.getItem("savedProperties")) || [];
-  saved.splice(index, 1);
-  localStorage.setItem("savedProperties", JSON.stringify(saved));
-  updateSavedCounter();
-}
-
-/* -----------------------------
-   🖼 IMAGE ZOOM
------------------------------ */
-document.addEventListener("click", e => {
-  if (e.target.classList.contains("zoomable")) {
-    const zoomOverlay = document.createElement("div");
-    zoomOverlay.classList.add("image-zoom");
-    zoomOverlay.innerHTML = `<img src="${e.target.src}" alt="Zoomed Image">`;
-    document.body.appendChild(zoomOverlay);
-    zoomOverlay.addEventListener("click", () => zoomOverlay.remove());
-  }
-});
 
 /* -----------------------------
    🏷 PROPERTY FILTER (Rent / Sale)
@@ -326,12 +319,9 @@ const propertyCards = document.querySelectorAll(".property-card");
 filterButtons.forEach(button => {
   button.addEventListener("click", () => {
     const type = button.getAttribute("data-type");
-
-    // Toggle active button
     filterButtons.forEach(btn => btn.classList.remove("active"));
     button.classList.add("active");
 
-    // Show / hide cards smoothly
     propertyCards.forEach(card => {
       if (type === "all" || card.dataset.type === type) {
         card.classList.remove("hide");
@@ -344,18 +334,18 @@ filterButtons.forEach(button => {
   });
 });
 
-// READ MORE / READ LESS FUNCTION
+/* -----------------------------
+   📖 READ MORE / READ LESS
+----------------------------- */
 document.addEventListener("DOMContentLoaded", function() {
   const readMoreBtn = document.getElementById("readMoreBtn");
   const extraText = document.querySelector(".extra-text");
-
-  readMoreBtn.addEventListener("click", function() {
-    extraText.classList.toggle("show");
-
-    if (extraText.classList.contains("show")) {
-      readMoreBtn.textContent = "Read Less";
-    } else {
-      readMoreBtn.textContent = "Read More";
-    }
-  });
+  if (readMoreBtn && extraText) {
+    readMoreBtn.addEventListener("click", function() {
+      extraText.classList.toggle("show");
+      readMoreBtn.textContent = extraText.classList.contains("show") ? "Read Less" : "Read More";
+    });
+  }
 });
+
+
